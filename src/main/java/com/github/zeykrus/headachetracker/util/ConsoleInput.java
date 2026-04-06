@@ -1,4 +1,4 @@
-package com.github.zeykrus.headachetracker;
+package com.github.zeykrus.headachetracker.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
