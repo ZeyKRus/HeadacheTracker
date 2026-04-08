@@ -1,5 +1,6 @@
 package com.github.zeykrus.headachetracker.entity;
 
+import com.github.zeykrus.headachetracker.dto.EpisodeRequestDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -31,6 +32,17 @@ public class HeadacheEpisodeEntity {
     private String comment;
     
     public HeadacheEpisodeEntity() {
+    }
+    
+    public static HeadacheEpisodeEntity fromRequest(EpisodeRequestDTO request) {
+        HeadacheEpisodeEntity episode = new HeadacheEpisodeEntity();
+        episode.setDateTime(request.dateTime());
+        episode.setIntensity(request.intensity());
+        episode.setLocation(request.location());
+        episode.setSymptoms(request.symptoms());
+        episode.setTriggers(request.triggers());
+        episode.setComment(request.comment());
+        return episode;
     }
     
     public Long getId() {

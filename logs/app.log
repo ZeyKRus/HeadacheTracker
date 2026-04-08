@@ -1,0 +1,145 @@
+2026-04-08 16:03:37.867 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 18124 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 16:03:37.869 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v4.1.0-M4, Spring v7.0.6
+2026-04-08 16:03:37.869 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:03:39.093 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 16:03:40.074 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.662 seconds (process running for 3.037)
+2026-04-08 16:04:24.377 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение числа: 15, defaultValue = 1
+2026-04-08 16:04:24.385 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записей в БД
+2026-04-08 16:04:24.735 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Успешно проведен поиск 15 записей в БД. Найдено 1
+2026-04-08 16:06:25.621 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 10456 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 16:06:25.623 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v4.1.0-M4, Spring v7.0.6
+2026-04-08 16:06:25.623 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:06:26.846 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-08 16:06:27.784 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.582 seconds (process running for 2.911)
+2026-04-08 16:08:23.409 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 16284 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 16:08:23.411 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v4.1.0-M4, Spring v7.0.6
+2026-04-08 16:08:23.412 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:08:25.622 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.653 seconds (process running for 3.013)
+2026-04-08 16:36:40.515 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 8868 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 16:36:40.516 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v4.1.0-M4, Spring v7.0.6
+2026-04-08 16:36:40.517 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:36:40.811 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-08 16:36:40.852 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interface.
+2026-04-08 16:36:41.106 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-08 16:36:41.155 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 8.0.0.Alpha1
+2026-04-08 16:36:41.547 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-08 16:36:41.573 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-08 16:36:41.705 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@c758a2d
+2026-04-08 16:36:41.706 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-08 16:36:41.764 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/headache_tracker]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.3
+	Default catalog/schema: headache_tracker/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-08 16:36:42.392 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-08 16:36:42.439 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 16:36:42.508 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-08 16:36:42.708 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.648 seconds (process running for 2.994)
+2026-04-08 16:36:59.255 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-08 16:36:59.256 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-08 16:36:59.260 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-08 16:37:05.140 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 12432 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 16:37:05.142 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v4.1.0-M4, Spring v7.0.6
+2026-04-08 16:37:05.142 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 16:37:07.305 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.613 seconds (process running for 2.994)
+2026-04-08 17:04:26.800 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 15312 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 17:04:26.801 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-08 17:04:26.802 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 17:04:27.384 [main] WARN  o.s.c.a.AnnotationConfigApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: 'jakarta.persistence.spi.PersistenceUnitTransactionType jakarta.persistence.spi.PersistenceUnitInfo.getTransactionType()'
+2026-04-08 17:04:27.404 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call a method that does not exist. The attempt was made from the following location:
+
+    org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter.getJpaPropertyMap(HibernateJpaVendorAdapter.java:135)
+
+The following method did not exist:
+
+    'jakarta.persistence.spi.PersistenceUnitTransactionType jakarta.persistence.spi.PersistenceUnitInfo.getTransactionType()'
+
+The calling method's class, org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter, was loaded from the following location:
+
+    jar:file:/C:/Users/1/.m2/repository/org/springframework/spring-orm/6.2.17/spring-orm-6.2.17.jar!/org/springframework/orm/jpa/vendor/HibernateJpaVendorAdapter.class
+
+The called method's class, jakarta.persistence.spi.PersistenceUnitInfo, is available from the following locations:
+
+    jar:file:/C:/Users/1/.m2/repository/jakarta/persistence/jakarta.persistence-api/4.0.0-M1/jakarta.persistence-api-4.0.0-M1.jar!/jakarta/persistence/spi/PersistenceUnitInfo.class
+
+The called method's class hierarchy was loaded from the following locations:
+
+    jakarta.persistence.spi.PersistenceUnitInfo: file:/C:/Users/1/.m2/repository/jakarta/persistence/jakarta.persistence-api/4.0.0-M1/jakarta.persistence-api-4.0.0-M1.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains compatible versions of the classes org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter and jakarta.persistence.spi.PersistenceUnitInfo
+
+2026-04-08 17:05:20.587 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 20592 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 17:05:20.588 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-08 17:05:20.589 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 17:05:22.626 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.502 seconds (process running for 2.807)
+2026-04-08 17:06:21.531 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 20456 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 17:06:21.532 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-08 17:06:21.533 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 17:06:23.552 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.474 seconds (process running for 2.763)
+2026-04-08 17:22:19.007 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 10196 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 17:22:19.008 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-08 17:22:19.009 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 17:22:21.047 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.495 seconds (process running for 2.775)
+2026-04-08 17:22:30.953 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение числа: 5, defaultValue = 1
+2026-04-08 17:22:30.961 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записей в БД
+2026-04-08 17:22:31.048 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Успешно проведен поиск 5 записей в БД. Найдено 1
+2026-04-08 17:22:42.151 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение даты: , defaultValue = 2026-04-08T17:22:38.943475400, pattern = yyyy-MM-dd HH:mm
+2026-04-08 17:22:42.153 [main] WARN  c.g.z.h.util.ConsoleInput - Ошибка преобразования строки в дату. Получена строка: , pattern = yyyy-MM-dd HH:mm
+2026-04-08 17:23:11.466 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение числа: -5, defaultValue = 1, min = 1, max = 10
+2026-04-08 17:23:18.318 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение строки: , defaultValue = Not specified
+2026-04-08 17:23:29.306 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение строки: bolit, defaultValue = Not specified
+2026-04-08 17:23:31.346 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение строки: , defaultValue = Not specified
+2026-04-08 17:23:33.933 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение строки: net, defaultValue = Not specified
+2026-04-08 17:23:33.934 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции добавления записи в БД: EpisodeRequestDTO[dateTime=2026-04-08T17:22:38.943475400, intensity=1, location=Not specified, symptoms=bolit, triggers=Not specified, comment=net]
+2026-04-08 17:23:33.968 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Добавлена новая запись в БД: 3 | 2026-04-08T17:22:38.943475400 | 1 | Not specified | bolit | Not specified | net
+2026-04-08 17:23:42.696 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение числа: 5, defaultValue = 1
+2026-04-08 17:23:42.697 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записей в БД
+2026-04-08 17:23:42.699 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Успешно проведен поиск 5 записей в БД. Найдено 2
+2026-04-08 20:42:09.484 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 6836 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 20:42:09.485 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-08 20:42:09.485 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 20:42:11.916 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.955 seconds (process running for 3.331)
+2026-04-08 20:42:19.722 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение числа: 5, defaultValue = 1
+2026-04-08 20:42:19.731 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записей в БД
+2026-04-08 20:42:19.825 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Успешно проведен поиск 5 записей в БД. Найдено 2
+2026-04-08 20:43:54.112 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 25016 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 20:43:54.113 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-08 20:43:54.113 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 20:43:56.102 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.44 seconds (process running for 2.743)
+2026-04-08 20:44:00.127 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение числа: 5, defaultValue = 1
+2026-04-08 20:44:00.134 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записей в БД
+2026-04-08 20:44:00.226 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Успешно проведен поиск 5 записей в БД. Найдено 2
+2026-04-08 20:44:04.055 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записи. ID: 1
+2026-04-08 20:44:04.066 [main] WARN  c.g.z.h.s.impl.EpisodeServiceImpl - Попытка поиска несуществующей записи. ID: 1
+2026-04-08 20:44:04.067 [main] WARN  c.g.z.headachetracker.Application - Ошибка изменения записи: запись с указанным ID не существует: 1
+2026-04-08 20:44:57.427 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записи. ID: 2
+2026-04-08 20:44:57.428 [main] DEBUG c.g.z.h.s.impl.EpisodeServiceImpl - Успешное выполнение операции поиска записи по ID: 2
+2026-04-08 20:45:46.809 [main] INFO  c.g.z.headachetracker.Application - Starting Application using Java 23.0.2 with PID 23132 (C:\Users\1\Documents\Programming\Projects\HeadacheTracker\target\classes started by 1 in C:\Users\1\Documents\Programming\Projects\HeadAcheTracker)
+2026-04-08 20:45:46.810 [main] DEBUG c.g.z.headachetracker.Application - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-04-08 20:45:46.810 [main] INFO  c.g.z.headachetracker.Application - No active profile set, falling back to 1 default profile: "default"
+2026-04-08 20:45:48.869 [main] INFO  c.g.z.headachetracker.Application - Started Application in 2.495 seconds (process running for 2.783)
+2026-04-08 20:45:55.745 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записи. ID: 2
+2026-04-08 20:45:55.783 [main] DEBUG c.g.z.h.s.impl.EpisodeServiceImpl - Успешное выполнение операции поиска записи по ID: 2
+2026-04-08 20:46:25.651 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции обновления записи. ID: 2
+2026-04-08 20:46:25.877 [main] DEBUG c.g.z.h.s.impl.EpisodeServiceImpl - Запись успешно обновлена. ID: 2
+2026-04-08 20:46:35.953 [main] TRACE c.g.z.h.util.ConsoleInput - Чтение числа: 5, defaultValue = 1
+2026-04-08 20:46:35.955 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Начало операции поиска записей в БД
+2026-04-08 20:46:35.972 [main] INFO  c.g.z.h.s.impl.EpisodeServiceImpl - Успешно проведен поиск 5 записей в БД. Найдено 2

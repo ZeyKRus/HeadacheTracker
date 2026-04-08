@@ -44,7 +44,6 @@ public final class ConsoleInput {
             return Integer.parseInt(line);
         } catch (NumberFormatException e) {
             log.warn("Ошибка преобразования строки в число. Получена строка: {}",line);
-            System.out.println("Некорректный ввод. Принимаем значение "+defaultValue);
             return defaultValue;
         }
     }
@@ -65,12 +64,10 @@ public final class ConsoleInput {
             int current = Integer.parseInt(line);
             if (current >= min && current <= max) return current;
             else {
-                System.out.println("Некорректный ввод. Принимаем значение "+defaultValue);
                 return defaultValue;
             }
         } catch (NumberFormatException e) {
             log.warn("Ошибка преобразования строки в число (MIN/MAX). Получена строка: {}",line);
-            System.out.println("Некорректный ввод. Принимаем значение "+defaultValue);
             return defaultValue;
         }
     }
@@ -89,8 +86,15 @@ public final class ConsoleInput {
             return LocalDateTime.parse(line, DateTimeFormatter.ofPattern(pattern));
         } catch (DateTimeParseException e) {
             log.warn("Ошибка преобразования строки в дату. Получена строка: {}, pattern = {}",line, pattern);
-            System.out.println("Некорректный ввод. Принимаем значение "+defaultValue);
             return defaultValue;
         }
+    }
+    
+    /**
+     * Получить доступ к статичному сканеру {@link Scanner}
+     * @return возвращает {@link Scanner}, который используется классом
+     */
+    public static Scanner getScanner() {
+        return scanner;
     }
 }

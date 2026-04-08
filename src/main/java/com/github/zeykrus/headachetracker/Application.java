@@ -1,35 +1,51 @@
 package com.github.zeykrus.headachetracker;
 
-import com.github.zeykrus.headachetracker.entity.HeadacheEpisodeEntity;
-import com.github.zeykrus.headachetracker.repository.HeadacheEpisodeRepository;
+import com.github.zeykrus.headachetracker.dto.EpisodeRequestDTO;
+import com.github.zeykrus.headachetracker.dto.EpisodeResponseDTO;
+import com.github.zeykrus.headachetracker.exception.EpisodeNotFoundException;
+import com.github.zeykrus.headachetracker.service.EpisodeService;
 import com.github.zeykrus.headachetracker.util.ConsoleInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+@SpringBootApplication
 public class Application {
     public static final Logger log = LoggerFactory.getLogger(Application.class);
-    public static final String STRING_NOT_SPECIFIED = "Не указано"; //String значение для defaultValue
-    public static final int INTENSITY_NOT_SPECIFIED = 1; //int значение для defaultValue intensity
-    public static final int INTENSITY_MIN = 1;
-    public static final int INTENSITY_MAX = 10;
-    public static final int DEFAULT_LIMIT = 1;
+    
+    @Value("${app.default.value.string}")
+    private String stringNotSpecified = "Не указано"; //String значение для defaultValue
+    
+    @Value("${app.default.value.intensity}")
+    private int intensityNotSpecified = 1; //int значение для defaultValue intensity
+    
+    @Value("${app.default.value.intensity.min}")
+    private int intensityMin = 1;
+    
+    @Value("${app.default.value.intensity.max}")
+    private int intensityMax = 10;
+    
+    @Value("${app.default.value.limit}")
+    private int defaultLimit = 1;
+    
+    @Value("${app.local.date.time.pattern}")
+    private String pattern;
     
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
     
     @Bean
-    public CommandLineRunner consoleRunner(HeadacheEpisodeRepository repo) {
+    public CommandLineRunner consoleRunner(EpisodeService service) {
         return args -> {
             Scanner scanner = new Scanner(System.in);
             boolean exit = false;
@@ -38,19 +54,23 @@ public class Application {
                 System.out.println("1. Добавить запись");
                 System.out.println("2. Показать последние N записей");
                 System.out.println("3. Удалить запись");
+                System.out.println("4. Изменить запись по ID");
                 System.out.println("0. Выход");
                 System.out.print("Выберите действие: ");
                 
                 String choice = scanner.nextLine().trim();
                 switch (choice) {
                     case "1":
-                        addEpisode(repo);
+                        addEpisode(service);
                         break;
                     case "2":
-                        showLastEpisodes(repo);
+                        showLastEpisodes(service);
                         break;
                     case "3":
-                        deleteEpisode(repo);
+                        deleteEpisode(service);
+                        break;
+                    case "4":
+                        updateEpisode(service);
                         break;
                     case "0":
                         exit = true;
@@ -62,71 +82,109 @@ public class Application {
         };
     }
     
-    public static void addEpisode(HeadacheEpisodeRepository repo) {
-        log.info("Начало операции добавления записи в БД");
-        String pattern = "yyyy-MM-dd HH:mm";
+    public void addEpisode(EpisodeService service) {
         System.out.print("Введите дату и время в формате: ");
         System.out.println(pattern);
         LocalDateTime dateTime = ConsoleInput.readDateTime(pattern, LocalDateTime.now());
         
-        System.out.println("Введите интенсивность боли (от 1 до 10)");
-        int intensity = ConsoleInput.readInt(INTENSITY_MIN, INTENSITY_MAX, INTENSITY_NOT_SPECIFIED);
+        System.out.println("Введите интенсивность боли (от "+intensityMin+" до "+intensityMax+")");
+        int intensity = ConsoleInput.readInt(intensityMin, intensityMax, intensityNotSpecified);
         
         System.out.println("Укажите место, где чувствуете боль");
-        String location = ConsoleInput.readLine(STRING_NOT_SPECIFIED);
+        String location = ConsoleInput.readLine(stringNotSpecified);
         
         System.out.println("Укажите симптомы");
-        String symptoms = ConsoleInput.readLine(STRING_NOT_SPECIFIED);
+        String symptoms = ConsoleInput.readLine(stringNotSpecified);
         
         System.out.println("Укажите возможные причины боли");
-        String triggers = ConsoleInput.readLine(STRING_NOT_SPECIFIED);
+        String triggers = ConsoleInput.readLine(stringNotSpecified);
         
         System.out.println("Добавьте комментарий");
-        String comment = ConsoleInput.readLine(STRING_NOT_SPECIFIED);
+        String comment = ConsoleInput.readLine(stringNotSpecified);
         
-        HeadacheEpisodeEntity episode = new HeadacheEpisodeEntity();
-        episode.setDateTime(dateTime);
-        episode.setIntensity(intensity);
-        episode.setLocation(location);
-        episode.setSymptoms(symptoms);
-        episode.setTriggers(triggers);
-        episode.setComment(comment);
-        repo.save(episode);
+        EpisodeRequestDTO request = new EpisodeRequestDTO(dateTime, intensity, location, symptoms, triggers, comment);
+        EpisodeResponseDTO response = service.create(request);
         System.out.println("Запись успешно добавлена");
-        log.info("Добавлена новая запись в БД: {}", episode);
+        System.out.println(response.toString());
     }
     
-    public static void showLastEpisodes(HeadacheEpisodeRepository repo) {
-        log.info("Начало операции поиска записей в БД");
+    public void showLastEpisodes(EpisodeService service) {
         System.out.println("Укажите количество записей для просмотра");
-        int limit = ConsoleInput.readInt(DEFAULT_LIMIT);
-        
-        Pageable pageable = PageRequest.of(0, limit); //Формат получения страниц: 0 - номер страницы, limit - объектов на страницу
-        Page<HeadacheEpisodeEntity> page = repo.findAllByOrderByDateTimeDesc(pageable); //Найти страницу записей, а не все записи из БД
-        List<HeadacheEpisodeEntity> list = page.getContent(); //Получить значения на странице в виде списка
-        
-        list.forEach(System.out::println);
-        log.info("Успешно проведен поиск {} записей в БД. Найдено {}", limit, page.getNumberOfElements());
+        int limit = ConsoleInput.readInt(defaultLimit);
+        Page<EpisodeResponseDTO> page = service.getLastEpisodes(limit);
+        page.forEach(System.out::println);
     }
     
-    public static void deleteEpisode(HeadacheEpisodeRepository repo) {
-        log.info("Начало операции удаления записи");
+    public void deleteEpisode(EpisodeService service) {
         System.out.println("Введите ID удаляемой записи");
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = ConsoleInput.getScanner();
         String str = scanner.nextLine().trim();
         try {
             Long currentId = Long.parseLong(str);
-            if (repo.findById(currentId).isPresent()) {
-                repo.deleteById(currentId);
-                System.out.println("Успешное удаление записи");
-                log.info("Успешное удаление записи, ID: {}",currentId);
-            } else {
-                System.out.println("Ошибка удаления записи: запись с таким ID не существует");
-                log.debug("Ошибка удаления записи: попытка удалить несуществующую запись: {}",currentId);
-            }
+            if(service.delete(currentId)) System.out.println("Запись успешно удалена");
         } catch (NumberFormatException e) {
             System.out.println("Ошибка удаления записи: введен некорректный ID для удаления");
             log.debug("Ошибка удаления записи: ошибка парсинга ID, получена строка: {}",str);
+        }
+    }
+    
+    public void updateEpisode(EpisodeService service) {
+        System.out.println("Введите ID изменяемой записи");
+        LocalDateTime dateTime;
+        int intensity;
+        String location;
+        String symptoms;
+        String triggers;
+        String comment;
+        
+        Scanner scanner = ConsoleInput.getScanner();
+        String str = scanner.nextLine().trim();
+        long currentId = 0;
+        EpisodeResponseDTO response;
+        try {
+            currentId = Long.parseLong(str);
+            response = service.read(currentId);
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка изменения записи: введен некорректный ID для изменения");
+            log.warn("Ошибка изменения записи: ошибка парсинга ID, получена строка: {}", str);
+            return;
+        } catch (EpisodeNotFoundException e) {
+            System.out.println("Ошибка изменения записи: введен некорректный ID для изменения");
+            log.warn("Ошибка изменения записи: запись с указанным ID не существует: {}", currentId);
+            return;
+        }
+        
+        System.out.println("Указанные в записи дата и время: "+response.dateTime().format(DateTimeFormatter.ofPattern(pattern)));
+        System.out.println("Введите новую дату и время в формате: yyyy-MM-dd HH:mm (Enter - не изменять)");
+        dateTime = ConsoleInput.readDateTime(pattern, response.dateTime());
+        
+        System.out.println("Указанная интенсивность: "+response.intensity());
+        System.out.println("Введите новую интенсивность (от "+intensityMin+" до "+intensityMax+") (Enter - не изменять)");
+        intensity = ConsoleInput.readInt(intensityMin, intensityMax, response.intensity());
+        
+        System.out.println("Указанное место боли: "+response.location());
+        System.out.println("Введите новое место боли (Enter - не изменять)");
+        location = ConsoleInput.readLine(response.location());
+        
+        System.out.println("Указанные симптомы: "+response.symptoms());
+        System.out.println("Введите новые симптомы (Enter - не изменять)");
+        symptoms = ConsoleInput.readLine(response.symptoms());
+        
+        System.out.println("Указанные причины: "+response.triggers());
+        System.out.println("Введите новые причины (Enter - не изменять)");
+        triggers = ConsoleInput.readLine(response.triggers());
+        
+        System.out.println("Указанный комментарий: "+response.comment());
+        System.out.println("Введите новый комментарий (Enter - не изменять)");
+        comment = ConsoleInput.readLine(response.comment());
+        
+        EpisodeRequestDTO request = new EpisodeRequestDTO(dateTime, intensity, location, symptoms, triggers, comment);
+        try {
+            EpisodeResponseDTO updated = service.update(currentId, request);
+            System.out.println("Запись успешно изменена");
+            System.out.println(updated.toString());
+        } catch (EpisodeNotFoundException e) {
+            System.out.println("Ошибка изменения записи: "+e.getMessage());
         }
     }
 }
