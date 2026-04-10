@@ -55,7 +55,6 @@ public class Application {
                 System.out.println("2. Показать последние N записей");
                 System.out.println("3. Удалить запись");
                 System.out.println("4. Изменить запись по ID");
-                System.out.println("0. Выход");
                 System.out.print("Выберите действие: ");
                 
                 String choice = scanner.nextLine().trim();
@@ -71,9 +70,6 @@ public class Application {
                         break;
                     case "4":
                         updateEpisode(service);
-                        break;
-                    case "0":
-                        exit = true;
                         break;
                     default:
                         System.out.println("Неверный выбор");
@@ -102,7 +98,10 @@ public class Application {
         System.out.println("Добавьте комментарий");
         String comment = ConsoleInput.readLine(stringNotSpecified);
         
-        EpisodeRequestDTO request = new EpisodeRequestDTO(dateTime, intensity, location, symptoms, triggers, comment);
+        System.out.println("Добавьте комментарий");
+        Long userId = ConsoleInput.readLong(0L);
+        
+        EpisodeRequestDTO request = new EpisodeRequestDTO(dateTime, intensity, location, symptoms, triggers, comment, userId);
         EpisodeResponseDTO response = service.create(request);
         System.out.println("Запись успешно добавлена");
         System.out.println(response.toString());
@@ -178,7 +177,11 @@ public class Application {
         System.out.println("Введите новый комментарий (Enter - не изменять)");
         comment = ConsoleInput.readLine(response.comment());
         
-        EpisodeRequestDTO request = new EpisodeRequestDTO(dateTime, intensity, location, symptoms, triggers, comment);
+        System.out.println("Указанный номер пользователя: "+response.userId());
+        System.out.println("Введите новый комментарий (Enter - не изменять)");
+        Long userId = ConsoleInput.readLong(response.userId());
+        
+        EpisodeRequestDTO request = new EpisodeRequestDTO(dateTime, intensity, location, symptoms, triggers, comment, userId);
         try {
             EpisodeResponseDTO updated = service.update(currentId, request);
             System.out.println("Запись успешно изменена");

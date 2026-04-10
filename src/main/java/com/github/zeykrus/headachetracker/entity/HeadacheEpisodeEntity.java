@@ -31,6 +31,9 @@ public class HeadacheEpisodeEntity {
     @Column
     private String comment;
     
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+    
     public HeadacheEpisodeEntity() {
     }
     
@@ -42,6 +45,7 @@ public class HeadacheEpisodeEntity {
         episode.setSymptoms(request.symptoms());
         episode.setTriggers(request.triggers());
         episode.setComment(request.comment());
+        episode.setUserId(request.userId());
         return episode;
     }
     
@@ -101,9 +105,17 @@ public class HeadacheEpisodeEntity {
         this.comment = comment;
     }
     
+    public Long getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    
     @Override
     public String toString() {
-        return String.format("%d | %s | %d | %s | %s | %s | %s",
-                id, dateTime, intensity, location, symptoms, triggers, comment);
+        return String.format("%d | %s | %d | %s | %s | %s | %s | %d",
+                id, dateTime, intensity, location, symptoms, triggers, comment, userId);
     }
 }

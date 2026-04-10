@@ -47,6 +47,23 @@ public final class ConsoleInput {
             return defaultValue;
         }
     }
+    
+    /**
+     * Метод для чтения больших чисел с клавиатуры
+     * @param defaultValue стандартное значение
+     * @return возращает полученное число, либо defaultValue, если строки не существует или не прошел {@link Integer#parseInt}
+     * @since 1.0
+     */
+    public static Long readLong(Long defaultValue) {
+        String line = scanner.nextLine().trim();
+        log.trace("Чтение большого числа: {}, defaultValue = {}",line,defaultValue);
+        try {
+            return Long.parseLong(line);
+        } catch (NumberFormatException e) {
+            log.warn("Ошибка преобразования строки в большое число. Получена строка: {}",line);
+            return defaultValue;
+        }
+    }
 
     /**
      * Метод для чтения чисел с клавиатуры в указанных границах
