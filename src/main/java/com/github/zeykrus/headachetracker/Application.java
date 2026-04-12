@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -55,6 +56,7 @@ public class Application {
                 System.out.println("2. Показать последние N записей");
                 System.out.println("3. Удалить запись");
                 System.out.println("4. Изменить запись по ID");
+                System.out.println("0. Выход");
                 System.out.print("Выберите действие: ");
                 
                 String choice = scanner.nextLine().trim();
@@ -70,6 +72,9 @@ public class Application {
                         break;
                     case "4":
                         updateEpisode(service);
+                        break;
+                    case "0":
+                        exit = true;
                         break;
                     default:
                         System.out.println("Неверный выбор");
@@ -102,9 +107,13 @@ public class Application {
         Long userId = ConsoleInput.readLong(0L);
         
         EpisodeRequestDTO request = new EpisodeRequestDTO(dateTime, intensity, location, symptoms, triggers, comment, userId);
-        EpisodeResponseDTO response = service.create(request);
-        System.out.println("Запись успешно добавлена");
-        System.out.println(response.toString());
+        Optional<EpisodeResponseDTO> response = service.create(request);
+        if (response.isPresent()) {
+            System.out.println("Запись успешно добавлена");
+            System.out.println(response.get());
+        } else {
+            System.out.println("Ошибка добавления записи");
+        }
     }
     
     public void showLastEpisodes(EpisodeService service) {

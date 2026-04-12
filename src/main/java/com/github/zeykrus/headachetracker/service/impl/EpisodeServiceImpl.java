@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class EpisodeServiceImpl implements EpisodeService {
     private static final Logger log = LoggerFactory.getLogger(EpisodeServiceImpl.class);
@@ -25,12 +27,19 @@ public class EpisodeServiceImpl implements EpisodeService {
     
     @Transactional
     @Override
-    public EpisodeResponseDTO create(EpisodeRequestDTO request) {
+    public Optional<EpisodeResponseDTO> create(EpisodeRequestDTO request) {
         log.info("Начало операции добавления записи в БД: {}", request);
         HeadacheEpisodeEntity episode = HeadacheEpisodeEntity.fromRequest(request);
-        HeadacheEpisodeEntity fromRepo = repo.save(episode);
-        log.info("Добавлена новая запись в БД: {}", fromRepo);
-        return EpisodeResponseDTO.fromEntity(fromRepo);
+        try {
+            HeadacheEpisodeEntity fromRepo = repo.save(episode);
+            log.info("Добавлена новая запись в БД: {}", fromRepo);
+            return Optional.of(EpisodeResponseDTO.fromEntity(fromRepo));
+        } catch (Exception e) {
+            log.error("Возникла ошибка создания новой записи в БД: {}",episode);
+            return Optional.empty();
+        }
+        
+        
     }
     
     @Transactional(readOnly = true)
